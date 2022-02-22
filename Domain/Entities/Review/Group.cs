@@ -10,7 +10,7 @@ public class Group : EntityBase
 /* section properties */
     [Required]
     [Display(Name = "Group name")]
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; set; } = null!;
 
 /* section collections */
 }

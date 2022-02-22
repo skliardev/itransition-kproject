@@ -20,31 +20,31 @@ public class UserReview : EntityBase
 
 /* section properties */
     [Display(Name = "Title page")]
-    public string Title { get; set; } = string.Empty;
+    public string Title { get; set; } = null!;
 
     [Display(Name = "Short text")]
-    public string SubTitle { get; set; } = string.Empty;
+    public string SubTitle { get; set; } = null!;
 
     [Display(Name = "Full text")]
-    public string Text { get; set; } = string.Empty;
+    public string Text { get; set; } = null!;
 
     [Display(Name = "SEO metateg Title")]
-    public string MetaTitle { get; set; } = string.Empty;
+    public string MetaTitle { get; set; } = null!;
 
     [Display(Name = "SEO metateg Description")]
-    public string MetaDescription { get; set; } = string.Empty;
+    public string MetaDescription { get; set; } = null!;
 
     [Display(Name = "SEO metateg Keywords")]
-    public string MetaKeywords { get; set; } = string.Empty;
+    public string MetaKeywords { get; set; } = null!;
 
     [Display(Name = "Grade of Author"), Range(0, 6)]
-    public byte GradeAuthor { get; set; }
+    public byte GradeAuthor { get; set; } = default;
 
     [Display(Name = "Grades of Users"), Range(0, 6)]
-    public byte GradesUsers { get; set; }
+    public byte GradesUsers { get; set; } = default;
 
     /* This service propety for recalc GradesUsers */
-    public int GradesUsersCount { get; set; }
+    public int GradesUsersCount { get; set; } = default;
 
 /* section collections */
     [Display(Name = "Collection links of images")]

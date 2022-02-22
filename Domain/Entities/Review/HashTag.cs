@@ -10,7 +10,7 @@ public class HashTag : EntityBase
 /* section properties */
     [Required]
     [Display(Name = "Tag name")]
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; set; } = null!;
 
 /* section collections */
 }

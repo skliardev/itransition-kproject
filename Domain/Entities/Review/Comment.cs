@@ -16,7 +16,7 @@ public class Comment
 
 /* section properties */
     [Display(Name = "Comment context")]
-    public string Content { get; set; } = string.Empty;
+    public string Content { get; set; } = null!;
 
 /* section collections */
 }

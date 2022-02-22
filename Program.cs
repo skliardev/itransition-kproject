@@ -6,7 +6,8 @@ builder.Services.AddSingleton<UptimeService>();
 
 builder.Services.AddControllersWithViews();
 
-builder.Configuration.Bind("CompanyDevelop", new Config());
+builder.Configuration.Bind("CompanyConfig", new CompanyConfig());
+builder.Configuration.Bind("AdminConfig", new AdminConfig());
 
 var app = builder.Build();
 

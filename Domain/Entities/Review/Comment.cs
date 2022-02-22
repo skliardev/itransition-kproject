@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace project.Domain.Entities.Review;
 
-public class Comment
+public class Comment : EntityBase
 {
 /* section references */
     [Required]

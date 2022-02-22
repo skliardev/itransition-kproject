@@ -42,24 +42,36 @@ public class AppDbContext : IdentityDbContext<UserAccount>
             }
         );
 
-        // string userAdminId = Guid.NewGuid().ToString();
+        string userAdminId = Guid.NewGuid().ToString();
+        string userOneId = Guid.NewGuid().ToString();
 
-        // builder.Entity<UserAccount>().HasData(
-        //     new UserAccount {
-        //         Id = userAdminId,
-        //         UserName = "admin",
-        //         NormalizedUserName = "ADMIN",
-        //         EmailConfirmed = true,
-        //         SecurityStamp = string.Empty
-        //     }
-        // );
+        builder.Entity<UserAccount>().HasData(
+            new UserAccount {
+                Id = userAdminId,
+                UserName = "admin",
+                NormalizedUserName = "ADMIN",
+                EmailConfirmed = true,
+                SecurityStamp = string.Empty
+            },
+            new UserAccount {
+                Id = userOneId,
+                UserName = "user",
+                NormalizedUserName = "USER",
+                EmailConfirmed = true,
+                SecurityStamp = string.Empty
+            }
+        );
 
-        // builder.Entity<IdentityUserRole<string>>().HasData(
-        //     new IdentityUserRole<string> {
-        //         RoleId = roleAdminId,
-        //         UserId = userAdminId
-        //     }
-        // );
+        builder.Entity<IdentityUserRole<string>>().HasData(
+            new IdentityUserRole<string> {
+                RoleId = roleAdminId,
+                UserId = userAdminId
+            },
+            new IdentityUserRole<string> {
+                RoleId = roleUserId,
+                UserId = userOneId
+            }
+        );
 
         builder.Entity<Group>().HasData(
             new Group {

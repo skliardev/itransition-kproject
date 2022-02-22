@@ -28,3 +28,10 @@ Main page
 Language
 => english
 => russian
+
+Averege
+=> M`(x) = (M*N + x)/(N + 1)
+
+/* section references */
+/* section properties */
+/* section collections */

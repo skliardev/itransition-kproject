@@ -13,16 +13,6 @@ public class EFLikes : IRepository<Like>
         this.context = context;
     }
 
-    public IEnumerable<Like> GetByFilter(Func<Like, bool> selector)
-    {
-        foreach(var item in GetRecords()) 
-        {
-            if(selector(item)) {
-                yield return item;
-            }
-        }
-    }
-
     public IQueryable<Like> GetRecords()
     {
         return context.DbLikes;

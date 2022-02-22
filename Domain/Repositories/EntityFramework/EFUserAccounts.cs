@@ -13,16 +13,6 @@ public class EFUserAccounts : IRepository<UserAccount>
         this.context = context;
     }
 
-    public IEnumerable<UserAccount> GetByFilter(Func<UserAccount, bool> selector)
-    {
-        foreach(var item in GetRecords()) 
-        {
-            if(selector(item)) {
-                yield return item;
-            }
-        }
-    }
-
     public IQueryable<UserAccount> GetRecords()
     {
         return context.DbUserAccounts;

@@ -13,16 +13,6 @@ public class EFImages : IRepository<Image>
         this.context = context;
     }
 
-    public IEnumerable<Image> GetByFilter(Func<Image, bool> selector)
-    {
-        foreach(var item in GetRecords()) 
-        {
-            if(selector(item)) {
-                yield return item;
-            }
-        }
-    }
-
     public IQueryable<Image> GetRecords()
     {
         return context.DbImages;

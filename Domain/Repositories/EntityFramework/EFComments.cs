@@ -13,16 +13,6 @@ public class EFComments : IRepository<Comment>
         this.context = context;
     }
 
-    public IEnumerable<Comment> GetByFilter(Func<Comment, bool> selector)
-    {
-        foreach(var item in GetRecords()) 
-        {
-            if(selector(item)) {
-                yield return item;
-            }
-        }
-    }
-
     public IQueryable<Comment> GetRecords()
     {
         return context.DbComments;

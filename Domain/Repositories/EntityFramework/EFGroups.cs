@@ -13,16 +13,6 @@ public class EFGroups : IRepository<Group>
         this.context = context;
     }
 
-    public IEnumerable<Group> GetByFilter(Func<Group, bool> selector)
-    {
-        foreach(var item in GetRecords()) 
-        {
-            if(selector(item)) {
-                yield return item;
-            }
-        }
-    }
-
     public IQueryable<Group> GetRecords()
     {
         return context.DbGroups;

@@ -13,16 +13,6 @@ public class EFUserReviews : IRepository<UserReview>
         this.context = context;
     }
 
-    public IEnumerable<UserReview> GetByFilter(Func<UserReview, bool> selector)
-    {
-        foreach(var item in GetRecords()) 
-        {
-            if(selector(item)) {
-                yield return item;
-            }
-        }
-    }
-
     public IQueryable<UserReview> GetRecords()
     {
         return context.DbUserReviews;

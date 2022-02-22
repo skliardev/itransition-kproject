@@ -4,7 +4,22 @@ namespace project.Domain.Repositories.Abstract;
 public interface IRepository<T>
 {
     IQueryable<T> GetRecords();
-    IEnumerable<T> GetByFilter(Func<T, bool> selector);
+    T? GetFirstRecord(Func<T, bool> prediacte)
+    {
+        return GetRecords().FirstOrDefault<T>(prediacte);
+    }
+    IEnumerable<T> GetByFilter(Func<T, bool> prediacte)
+    {
+        foreach(var item in GetRecords()) 
+        {
+            if(prediacte(item)) {
+                yield return item;
+            }
+        }
+    }
     void SaveRecord(T record);
-    void RemoveRecord(Guid id);
+    void RemoveRecord(Guid id)
+    {
+        
+    }
 }

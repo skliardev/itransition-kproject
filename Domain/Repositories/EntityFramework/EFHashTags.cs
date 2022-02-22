@@ -13,16 +13,6 @@ public class EFHashTags : IRepository<HashTag>
         this.context = context;
     }
 
-    public IEnumerable<HashTag> GetByFilter(Func<HashTag, bool> selector)
-    {
-        foreach(var item in GetRecords()) 
-        {
-            if(selector(item)) {
-                yield return item;
-            }
-        }
-    }
-
     public IQueryable<HashTag> GetRecords()
     {
         return context.DbHashTags;

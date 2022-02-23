@@ -47,6 +47,7 @@ public class AppDbContext : IdentityDbContext<UserAccount>
                 Id = userAdminId,
                 UserName = "admin",
                 NormalizedUserName = "ADMIN",
+                PasswordHash = new PasswordHasher<UserAccount>().HashPassword(null!, "admin"),
                 EmailConfirmed = true,
                 SecurityStamp = string.Empty
             },
@@ -54,6 +55,7 @@ public class AppDbContext : IdentityDbContext<UserAccount>
                 Id = userOneId,
                 UserName = "user",
                 NormalizedUserName = "USER",
+                PasswordHash = new PasswordHasher<UserAccount>().HashPassword(null!, "user"),
                 EmailConfirmed = true,
                 SecurityStamp = string.Empty
             }

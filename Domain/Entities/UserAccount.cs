@@ -10,6 +10,9 @@ public class UserAccount : IdentityUser
     [Display(Name = "User status")]
     public UserStatus Status { get; set; } = UserStatus.OFFLINE;
 
+    [Display(Name = "Last login")]
+    public DateTime LastLogin { get; set; }
+
     [Display(Name = "Like count")]
     public int LikeCount { get; set; } = default;
 

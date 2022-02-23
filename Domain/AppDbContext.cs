@@ -9,10 +9,7 @@ namespace project.Domain;
 
 public class AppDbContext : IdentityDbContext<UserAccount>
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    {
-        Database.EnsureCreated();
-    }
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
 
     public DbSet<UserAccount> DbUserAccounts { get; set; } = null!;
     public DbSet<UserReview> DbUserReviews { get; set; } = null!;

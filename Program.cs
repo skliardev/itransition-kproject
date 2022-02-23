@@ -24,7 +24,7 @@ builder.Services.AddTransient<IRepository<Like>, EFLikes>();
 builder.Services.AddTransient<DataManager>();
 
 builder.Services.AddDbContext<AppDbContext>(opts => opts.UseSqlServer(
-    builder.Configuration.GetConnectionString("remoteSQL")
+    builder.Configuration.GetConnectionString("remoteSql")
 ));
 
 var app = builder.Build();

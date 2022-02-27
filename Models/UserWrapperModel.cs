@@ -1,10 +1,14 @@
 
 using System.ComponentModel.DataAnnotations;
+using project.Domain.Entities;
 
 namespace project.Models;
 
-public class ListUsersModel
+public class UserWrapperModel
 {
+    [Display(Name = "Id")]
+    public string Id { get; set; } = null!;
+
     [Required]
     [Display(Name = "User name")]
     public string UserName { get; set; } = null!;

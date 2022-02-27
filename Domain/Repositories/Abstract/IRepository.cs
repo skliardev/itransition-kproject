@@ -1,4 +1,6 @@
 
+using Microsoft.EntityFrameworkCore;
+
 namespace project.Domain.Repositories.Abstract;
 
 public interface IRepository<T>
@@ -18,8 +20,5 @@ public interface IRepository<T>
         }
     }
     void SaveRecord(T record);
-    void RemoveRecord(Guid id)
-    {
-        
-    }
+    void RemoveRecord(Guid id);
 }

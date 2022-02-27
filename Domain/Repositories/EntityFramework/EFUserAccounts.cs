@@ -6,12 +6,16 @@ namespace project.Domain.Repositories.EntityFramework;
 
 public class EFUserAccounts : IRepository<UserAccount>
 {
+    public AppDbContext DbContext { get; }
     private readonly AppDbContext context;
 
     public EFUserAccounts(AppDbContext context)
     {
         this.context = context;
+        DbContext = context;
     }
+
+    
 
     public IQueryable<UserAccount> GetRecords()
     {
@@ -27,6 +31,7 @@ public class EFUserAccounts : IRepository<UserAccount>
     {
         if(record.Id == null)
         {
+            record.Id = Guid.NewGuid().ToString();
             context.Entry(record).State = EntityState.Added;
         }
         else
@@ -34,5 +39,20 @@ public class EFUserAccounts : IRepository<UserAccount>
             context.Entry(record).State = EntityState.Modified;
         }
         context.SaveChanges();
+    }
+
+    IQueryable<UserAccount> IRepository<UserAccount>.GetRecords()
+    {
+        throw new NotImplementedException();
+    }
+
+    void IRepository<UserAccount>.RemoveRecord(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+
+    void IRepository<UserAccount>.SaveRecord(UserAccount record)
+    {
+        throw new NotImplementedException();
     }
 }

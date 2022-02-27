@@ -11,7 +11,10 @@ public class UserAccount : IdentityUser
     public UserStatus Status { get; set; } = UserStatus.OFFLINE;
 
     [Display(Name = "Last login")]
-    public DateTime LastLogin { get; set; }
+    public DateTime LastLogin { get; set; } = DateTime.UtcNow;
+
+    [Display(Name = "Published")]
+    public DateTime Published { get; set; } = DateTime.UtcNow;
 
     [Display(Name = "Like count")]
     public int LikeCount { get; set; } = default;

@@ -15,7 +15,7 @@ public class EFHashTags : IRepository<HashTag>
 
     public IQueryable<HashTag> GetRecords()
     {
-        return context.DbHashTags;
+        return context.DbHashTags.AsQueryable<HashTag>();
     }
 
     public void RemoveRecord(Guid id)

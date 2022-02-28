@@ -15,7 +15,7 @@ public class EFGroups : IRepository<Group>
 
     public IQueryable<Group> GetRecords()
     {
-        return context.DbGroups;
+        return context.DbGroups.AsQueryable<Group>();
     }
 
     public void RemoveRecord(Guid id)

@@ -15,7 +15,7 @@ public class EFUserReviews : IRepository<UserReview>
 
     public IQueryable<UserReview> GetRecords()
     {
-        return context.DbUserReviews;
+        return context.DbUserReviews.AsQueryable<UserReview>();
     }
 
     public void RemoveRecord(Guid id)

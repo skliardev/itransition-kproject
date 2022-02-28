@@ -3,17 +3,24 @@ using project.Domain.Entities;
 using project.Domain.Repositories.Abstract;
 using Microsoft.AspNetCore.JsonPatch;
 using project.Models;
+using System.Linq;
 
-namespace project.Controllers;
+namespace project.Controllers.Api;
 
-[Route("api/[controller]")]
-public class UserApiController : Controller
+[Route("api/[controller]/[action]")]
+public class UserController : Controller
 {   
     private IRepository<UserAccount> users;
 
-    public UserApiController(IRepository<UserAccount> userAccount)
+    public UserController(IRepository<UserAccount> userAccount)
     {
         users = userAccount;
+    }
+
+    [HttpGet("{name}")]
+    public string IsExists(string name)
+    {
+        return users.GetRecords().FirstOrDefault(user => user.UserName == name) != null ? "Exists" : "NotExists";
     }
 
     [HttpGet]
@@ -54,20 +61,20 @@ public class UserApiController : Controller
         
     }
 
-    [HttpPost]
-    public UserWrapperModel? Post([FromBody] UserWrapperModel user)
-    {
-        return Put(user);
-    }
+    // [HttpPost]
+    // public UserWrapperModel? Post([FromBody] UserWrapperModel user)
+    // {
+    //     return Put(user);
+    // }
 
-    [HttpPatch("{name}")]
-    public StatusCodeResult Patch(string name, [FromBody] JsonPatchDocument<UserAccount> patch)
-    {
-        UserAccount? user = Get(name);
-        if(user == default) return NotFound();
-        patch.ApplyTo(user);
-        return Ok();
-    }
+    // [HttpPatch("{name}")]
+    // public StatusCodeResult Patch(string name, [FromBody] JsonPatchDocument<UserAccount> patch)
+    // {
+    //     UserAccount? user = Get(name);
+    //     if(user == default) return NotFound();
+    //     patch.ApplyTo(user);
+    //     return Ok();
+    // }
 
     // [HttpDelete("{name}")]
     // public void Delete(string name) => users.RemoveRecord()

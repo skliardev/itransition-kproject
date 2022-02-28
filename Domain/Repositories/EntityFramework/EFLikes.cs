@@ -15,7 +15,7 @@ public class EFLikes : IRepository<Like>
 
     public IQueryable<Like> GetRecords()
     {
-        return context.DbLikes;
+        return context.DbLikes.AsQueryable<Like>();
     }
 
     public void RemoveRecord(Guid id)

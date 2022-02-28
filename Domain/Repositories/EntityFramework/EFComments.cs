@@ -15,7 +15,7 @@ public class EFComments : IRepository<Comment>
 
     public IQueryable<Comment> GetRecords()
     {
-        return context.DbComments;
+        return context.DbComments.AsQueryable<Comment>();
     }
 
     public void RemoveRecord(Guid id)

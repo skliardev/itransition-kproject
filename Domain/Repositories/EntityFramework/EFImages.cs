@@ -15,7 +15,7 @@ public class EFImages : IRepository<Image>
 
     public IQueryable<Image> GetRecords()
     {
-        return context.DbImages;
+        return context.DbImages.AsQueryable<Image>();
     }
 
     public void RemoveRecord(Guid id)

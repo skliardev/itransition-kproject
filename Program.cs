@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using project.Domain;
 using project.Domain.Entities;
@@ -27,6 +28,11 @@ builder.Services.AddDbContext<AppDbContext>(opts => opts.UseSqlServer(
     builder.Configuration.GetConnectionString("remoteSql")
 ));
 
+builder.Services.AddIdentity<UserAccount, IdentityRole>(opts => 
+{
+
+}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
 var app = builder.Build();
 
 // Banned windows users how example
@@ -47,7 +53,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseAuthentication();
+//app.UseAuthorization();
 
 app.UseEndpoints(opts =>
 {

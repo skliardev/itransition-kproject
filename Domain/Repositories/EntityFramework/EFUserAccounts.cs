@@ -19,7 +19,7 @@ public class EFUserAccounts : IRepository<UserAccount>
 
     public IQueryable<UserAccount> GetRecords()
     {
-        return context.DbUserAccounts;
+        return context.DbUserAccounts.AsQueryable<UserAccount>();
     }
 
     public void RemoveRecord(Guid id)
@@ -39,20 +39,5 @@ public class EFUserAccounts : IRepository<UserAccount>
             context.Entry(record).State = EntityState.Modified;
         }
         context.SaveChanges();
-    }
-
-    IQueryable<UserAccount> IRepository<UserAccount>.GetRecords()
-    {
-        throw new NotImplementedException();
-    }
-
-    void IRepository<UserAccount>.RemoveRecord(Guid id)
-    {
-        throw new NotImplementedException();
-    }
-
-    void IRepository<UserAccount>.SaveRecord(UserAccount record)
-    {
-        throw new NotImplementedException();
     }
 }

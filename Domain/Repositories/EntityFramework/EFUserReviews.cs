@@ -25,14 +25,13 @@ public class EFUserReviews : IRepository<UserReview>
 
     public void SaveRecord(UserReview record)
     {
-        if(record.Id == null)
-        {
-            context.Entry(record).State = EntityState.Added;
-        }
-        else
-        {
-            context.Entry(record).State = EntityState.Modified;
-        }
+        context.Entry(record).State = EntityState.Added;
+        context.SaveChanges();
+    }
+
+    public void UpdateRecord(UserReview record)
+    {
+        context.Entry(record).State = EntityState.Modified;
         context.SaveChanges();
     }
 }

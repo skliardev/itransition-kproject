@@ -25,14 +25,13 @@ public class EFGroups : IRepository<Group>
 
     public void SaveRecord(Group record)
     {
-        if(record.Id == null)
-        {
-            context.Entry(record).State = EntityState.Added;
-        }
-        else
-        {
-            context.Entry(record).State = EntityState.Modified;
-        }
+        context.Entry(record).State = EntityState.Added;
+        context.SaveChanges();
+    }
+
+    public void UpdateRecord(Group record)
+    {
+        context.Entry(record).State = EntityState.Modified;
         context.SaveChanges();
     }
 }

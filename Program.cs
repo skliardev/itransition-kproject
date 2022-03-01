@@ -54,11 +54,12 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
-//app.UseAuthorization();
+app.UseAuthorization();
 
 app.UseEndpoints(opts =>
 {
-    opts.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+    opts.MapControllerRoute("default", "{controller=News}/{action=Index}/{id?}");
+    // opts.MapControllerRoute("account", "{controller=Account}/{action=SignIn}/{id?}");
     // opts.MapControllerRoute("default", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 });
 

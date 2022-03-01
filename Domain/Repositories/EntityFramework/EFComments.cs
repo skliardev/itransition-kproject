@@ -25,14 +25,13 @@ public class EFComments : IRepository<Comment>
 
     public void SaveRecord(Comment record)
     {
-        if(record.Id == null)
-        {
-            context.Entry(record).State = EntityState.Added;
-        }
-        else
-        {
-            context.Entry(record).State = EntityState.Modified;
-        }
+        context.Entry(record).State = EntityState.Added;
+        context.SaveChanges();
+    }
+
+    public void UpdateRecord(Comment record)
+    {
+        context.Entry(record).State = EntityState.Modified;
         context.SaveChanges();
     }
 }

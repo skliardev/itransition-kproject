@@ -15,8 +15,6 @@ public class EFUserAccounts : IRepository<UserAccount>
         DbContext = context;
     }
 
-    
-
     public IQueryable<UserAccount> GetRecords()
     {
         return context.DbUserAccounts.AsQueryable<UserAccount>();
@@ -29,15 +27,14 @@ public class EFUserAccounts : IRepository<UserAccount>
 
     public void SaveRecord(UserAccount record)
     {
-        if(record.Id == null)
-        {
-            record.Id = Guid.NewGuid().ToString();
-            context.Entry(record).State = EntityState.Added;
-        }
-        else
-        {
-            context.Entry(record).State = EntityState.Modified;
-        }
+        record.Id = Guid.NewGuid().ToString();
+        context.Entry(record).State = EntityState.Added;
+        context.SaveChanges();
+    }
+
+    public void UpdateRecord(UserAccount record)
+    {
+        context.Entry(record).State = EntityState.Modified;
         context.SaveChanges();
     }
 }

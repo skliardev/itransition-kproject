@@ -25,14 +25,13 @@ public class EFHashTags : IRepository<HashTag>
 
     public void SaveRecord(HashTag record)
     {
-        if(record.Id == null)
-        {
-            context.Entry(record).State = EntityState.Added;
-        }
-        else
-        {
-            context.Entry(record).State = EntityState.Modified;
-        }
+        context.Entry(record).State = EntityState.Added;
+        context.SaveChanges();
+    }
+
+    public void UpdateRecord(HashTag record)
+    {
+        context.Entry(record).State = EntityState.Modified;
         context.SaveChanges();
     }
 }

@@ -3,13 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home - project</title>
+    <title>@ViewData["title"] - project</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
 </head>
 <body class="d-flex flex-column h-100">
-    <!-- Modals -->
-    @await Html.PartialAsync("ModalsPartial")
-    
     <!-- Header -->
     @await Html.PartialAsync("HeaderPartial")
 
@@ -25,7 +22,5 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
-    <script src="~/js/client.js" asp-append-version="true"></script>
-    <script src="~/js/signup.js" asp-append-version="true"></script>
 </body>
 </html>

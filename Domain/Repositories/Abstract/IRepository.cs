@@ -20,5 +20,6 @@ public interface IRepository<T>
         }
     }
     void SaveRecord(T record);
+    void UpdateRecord(T record);
     void RemoveRecord(Guid id);
 }
